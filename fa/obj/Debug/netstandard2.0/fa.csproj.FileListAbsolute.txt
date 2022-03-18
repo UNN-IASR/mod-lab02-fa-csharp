@@ -6,3 +6,8 @@
 /Users/anton/Desktop/NET/mod-task02-fa/fa/obj/Debug/netstandard2.0/fa.AssemblyInfo.cs
 /Users/anton/Desktop/NET/mod-task02-fa/fa/obj/Debug/netstandard2.0/fa.dll
 /Users/anton/Desktop/NET/mod-task02-fa/fa/obj/Debug/netstandard2.0/fa.pdb
+D:\Университет\MIPIS\Lab02\fa\obj\Debug\netstandard2.0\fa.AssemblyInfoInputs.cache
+D:\Университет\MIPIS\Lab02\fa\obj\Debug\netstandard2.0\fa.AssemblyInfo.cs
+D:\Университет\MIPIS\Lab02\fa\obj\Debug\netstandard2.0\fa.csproj.CoreCompileInputs.cache
+D:\Университет\MIPIS\Lab02\fa\obj\Debug\netstandard2.0\fa.dll
+D:\Университет\MIPIS\Lab02\fa\obj\Debug\netstandard2.0\fa.pdb
