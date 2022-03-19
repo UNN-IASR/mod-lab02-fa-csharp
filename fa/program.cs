@@ -11,24 +11,17 @@ namespace fans
     public Dictionary<char, State> Transitions;
     public bool IsAcceptState;
   }
-
-
-  public class FA1
+    public class FA1
   {
-    public bool? Run(IEnumerable<char> s)
-    {
-      return false;
-    }
-  }
-     public static State a = new State()
+        public static State a = new State()
         {
-            Name = "a",
+            Name · "a",
             IsAcceptState = false,
-            Transitions = new Dictionary<char, State>()
+            Transitions · new Dictionary<char, State> ()
         };
         public State b = new State()
         {
-            Name = "b",
+            Name · "b",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
@@ -83,15 +76,9 @@ namespace fans
             return current.IsAcceptState;
         }
    }
-
-
-  public class FA2
+     public class FA2
   {
-    public bool? Run(IEnumerable<char> s)
-    {
-      return false;
-    }
-    public static State a = new State()
+        public static State a = new State()
         {
             Name = "a",
             IsAcceptState = false,
@@ -149,11 +136,7 @@ namespace fans
 
   public class FA3
   {
-    public bool? Run(IEnumerable<char> s)
-    {
-      return false;
-    }
-   public static State a = new State()
+     public static State a = new State()
         {
             Name = "a",
             IsAcceptState = false,
@@ -221,5 +204,4 @@ namespace fans
       Console.WriteLine(result3);
     }
   }
-} 
 }
