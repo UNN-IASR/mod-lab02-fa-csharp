@@ -84,13 +84,13 @@ namespace fans
         public static State q1 = new State()
         {
             Name = "q1",
-            IsAcceptState = false,
+            IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
         public static State q2 = new State()
         {
             Name = "q2",
-            IsAcceptState = false,
+            IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
         public static State q3 = new State()
@@ -99,27 +99,19 @@ namespace fans
             IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
-        public static State q4 = new State()
-        {
-            Name = "q4",
-            IsAcceptState = false,
-            Transitions = new Dictionary<char, State>()
-        };
 
         State InitialState = q0;
 
         public FA2()
         {
-            q0.Transitions['0'] = q1;
-            q0.Transitions['1'] = q2;
-            q1.Transitions['0'] = q0;
-            q1.Transitions['1'] = q3;
-            q2.Transitions['0'] = q3;
-            q2.Transitions['1'] = q0;
-            q3.Transitions['0'] = q4;
-            q3.Transitions['1'] = q4;
-            q4.Transitions['0'] = q3;
-            q4.Transitions['1'] = q3;
+            q0.Transitions['0'] = q2;
+            q0.Transitions['1'] = q1;
+            q1.Transitions['0'] = q3;
+            q1.Transitions['1'] = q0;
+            q2.Transitions['0'] = q0;
+            q2.Transitions['1'] = q3;
+            q3.Transitions['0'] = q1;
+            q3.Transitions['1'] = q2;
         }
 
         public bool? Run(IEnumerable<char> s)
