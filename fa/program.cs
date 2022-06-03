@@ -43,6 +43,7 @@
             e.Transitions['0'] = e;
             e.Transitions['1'] = e;
         }
+    State InitialState = a;
     public bool? Run(IEnumerable<char> s)
     {
       return false;
@@ -95,6 +96,7 @@
           d.Transitions['0'] = c;
           d.Transitions['1'] = b; 
         }
+    State InitialState = a;
     public bool? Run(IEnumerable<char> s)
     {
       return false;
@@ -139,6 +141,7 @@
           c.Transitions['0'] = c;
           c.Transitions['1'] = c;
         }
+    State InitialState = a;
     public bool? Run(IEnumerable<char> s)
     {
       return false;
@@ -159,7 +162,7 @@
     static void Main(string[] args)
     {
       String s = "01011";
-      String s = "010101";
+      String s = "011101";
       FA1 fa1 = new FA1();
       bool? result1 = fa1.Run(s);
       Console.WriteLine(result1);
