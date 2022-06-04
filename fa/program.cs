@@ -46,16 +46,16 @@ namespace fans
     };
     public FA1()
         {
-            a.Transitions['0'] = c;
-            a.Transitions['1'] = b;
-            b.Transitions['0'] = d;
-            b.Transitions['1'] = b;
-            c.Transitions['0'] = e;
-            c.Transitions['1'] = d;
-            d.Transitions['0'] = e;
-            d.Transitions['1'] = d;
-            e.Transitions['0'] = e;
-            e.Transitions['1'] = e;
+             a.Transitions['0'] = b;
+             a.Transitions['1'] = c;
+             b.Transitions['0'] = e;
+             b.Transitions['1'] = d;
+             c.Transitions['0'] = d;
+             c.Transitions['1'] = c;
+             d.Transitions['0'] = e;
+             d.Transitions['1'] = d;
+             e.Transitions['0'] = e;
+             e.Transitions['1'] = e;
         }
     State InitialState = a;
     public bool? Run(IEnumerable<char> s)
@@ -175,7 +175,7 @@ namespace fans
   {
     static void Main(string[] args)
     {
-      String s = "01011";
+      String s = "01111";
       FA1 fa1 = new FA1();
       bool? result1 = fa1.Run(s);
       Console.WriteLine(result1);
