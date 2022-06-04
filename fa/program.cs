@@ -41,26 +41,25 @@ namespace fans
     public State e = new State()
     {
       Name = "e",
-      IsAcceptState = false,
+      IsAcceptState = true,
       Transitions = new Dictionary<char, State>()
     };
     public FA1()
         {
              a.Transitions['0'] = b;
              a.Transitions['1'] = c;
-             b.Transitions['0'] = e;
-             b.Transitions['1'] = d;
-             c.Transitions['0'] = d;
+             b.Transitions['0'] = d;
+             b.Transitions['1'] = e;
+             c.Transitions['0'] = e;
              c.Transitions['1'] = c;
-             d.Transitions['0'] = e;
+             d.Transitions['0'] = d;
              d.Transitions['1'] = d;
-             e.Transitions['0'] = e;
+             e.Transitions['0'] = d;
              e.Transitions['1'] = e;
         }
     State InitialState = a;
     public bool? Run(IEnumerable<char> s)
     {
-      return false;
       State current = InitialState;
       foreach (var c in s)
       {
@@ -96,7 +95,7 @@ namespace fans
     public static State d = new State()
     {
       Name = "d",
-      IsAcceptState = false,
+      IsAcceptState = true,
       Transitions = new Dictionary<char, State>()
     };
     public FA2()
@@ -113,7 +112,6 @@ namespace fans
     State InitialState = a;
     public bool? Run(IEnumerable<char> s)
     {
-      return false;
       State current = InitialState;
       foreach (var c in s)
       {
@@ -146,19 +144,26 @@ namespace fans
       IsAcceptState = false,
       Transitions = new Dictionary<char, State>()
     };
+    public State d = new State()
+    {
+      Name = "d",
+      IsAcceptState = true,
+      Transitions = new Dictionary<char, State>()
+    };
     public FA3()
         {
-          a.Transitions['0'] = a;
-          a.Transitions['1'] = b;
-          b.Transitions['0'] = a;
-          b.Transitions['1'] = c;
-          c.Transitions['0'] = c;
-          c.Transitions['1'] = c;
+            a.Transitions['0'] = b;
+            a.Transitions['1'] = c;
+            b.Transitions['0'] = a;
+            b.Transitions['1'] = c;
+            c.Transitions['0'] = a;
+            c.Transitions['1'] = d;
+            d.Transitions['0'] = d;
+            d.Transitions['1'] = d;
         }
     State InitialState = a;
     public bool? Run(IEnumerable<char> s)
     {
-      return false;
       State current = InitialState;
       foreach (var c in s)
       {
@@ -175,7 +180,7 @@ namespace fans
   {
     static void Main(string[] args)
     {
-      String s = "01111";
+      String s = "0111";
       FA1 fa1 = new FA1();
       bool? result1 = fa1.Run(s);
       Console.WriteLine(result1);
