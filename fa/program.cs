@@ -1,3 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace fans
+{
+  public class State
+  {
+    public string Name;
+    public Dictionary<char, State> Transitions;
+    public bool IsAcceptState;
+  } 
+
   public class FA1
   {
     public static State a = new State()
@@ -162,7 +176,6 @@
     static void Main(string[] args)
     {
       String s = "01011";
-      String s = "011101";
       FA1 fa1 = new FA1();
       bool? result1 = fa1.Run(s);
       Console.WriteLine(result1);
@@ -174,3 +187,4 @@
       Console.WriteLine(result3);
     }
   }
+}
