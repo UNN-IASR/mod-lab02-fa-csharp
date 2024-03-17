@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ciLEYXKveQ5VlllaJUYklFTvOEPuXSaazXpmcLm/Cfw2KxFZlWmd1uzj5dL1hKv72t7fbi2creYTKL40kMRqmg==",
+  "success": true,
+  "projectFilePath": "C:\\YandexDisk\\Хлам\\лабы\\МИПИС\\mipis2\\fa\\fa.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Laptop\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Laptop\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

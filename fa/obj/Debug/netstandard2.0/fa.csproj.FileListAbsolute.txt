@@ -6,3 +6,13 @@
 /Users/anton/Desktop/NET/mod-task02-fa/fa/obj/Debug/netstandard2.0/fa.AssemblyInfo.cs
 /Users/anton/Desktop/NET/mod-task02-fa/fa/obj/Debug/netstandard2.0/fa.dll
 /Users/anton/Desktop/NET/mod-task02-fa/fa/obj/Debug/netstandard2.0/fa.pdb
+C:\YandexDisk\Хлам\лабы\МИПИС\mipis2\fa\obj\Debug\netstandard2.0\fa.csproj.AssemblyReference.cache
+C:\YandexDisk\Хлам\лабы\МИПИС\mipis2\fa\obj\Debug\netstandard2.0\fa.GeneratedMSBuildEditorConfig.editorconfig
+C:\YandexDisk\Хлам\лабы\МИПИС\mipis2\fa\obj\Debug\netstandard2.0\fa.AssemblyInfoInputs.cache
+C:\YandexDisk\Хлам\лабы\МИПИС\mipis2\fa\obj\Debug\netstandard2.0\fa.AssemblyInfo.cs
+C:\YandexDisk\Хлам\лабы\МИПИС\mipis2\fa\obj\Debug\netstandard2.0\fa.csproj.CoreCompileInputs.cache
+C:\YandexDisk\Хлам\лабы\МИПИС\mipis2\fa\obj\Debug\netstandard2.0\fa.dll
+C:\YandexDisk\Хлам\лабы\МИПИС\mipis2\fa\obj\Debug\netstandard2.0\fa.pdb
+C:\YandexDisk\Хлам\лабы\МИПИС\mipis2\fa\bin\Debug\netstandard2.0\fa.deps.json
+C:\YandexDisk\Хлам\лабы\МИПИС\mipis2\fa\bin\Debug\netstandard2.0\fa.dll
+C:\YandexDisk\Хлам\лабы\МИПИС\mipis2\fa\bin\Debug\netstandard2.0\fa.pdb
