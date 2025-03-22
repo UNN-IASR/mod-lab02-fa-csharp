@@ -16,25 +16,213 @@ namespace fans
 
   public class FA1
   {
+    public static State q1 = new State()
+    {
+      Name = "q1",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    public static State q2 = new State()
+    {
+      Name = "q2",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    public static State q3 = new State()
+    {
+      Name = "q3",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    public static State q4 = new State()
+    {
+      Name = "q4",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    public static State q5 = new State()
+    {
+      Name = "q5",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = true
+
+
+    };
+    State InitialState = q1;
+    public FA1()
+    {
+      q1.Transitions['0'] = q2;
+      q1.Transitions['1'] = q3;
+
+      q2.Transitions['0'] = q4;
+      q2.Transitions['1'] = q5;
+      
+      q3.Transitions['0'] = q5;
+      q3.Transitions['1'] = q3;
+      
+      q4.Transitions['0'] = q4;
+      q4.Transitions['1'] = q4;
+      
+      q5.Transitions['0'] = q4;
+      q5.Transitions['1'] = q5;
+      
+    }
     public bool? Run(IEnumerable<char> s)
     {
-      return false;
+        State current = InitialState;
+         foreach (var c in s) // цикл по всем символам 
+            {
+                current = current.Transitions[c]; 
+                if (current == null)              
+                    return null;
+            }
+            return current.IsAcceptState;         
     }
   }
 
   public class FA2
   {
+    public static State q1 = new State()
+    {
+      Name = "q1",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    public static State q2 = new State()
+    {
+      Name = "q2",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    public static State q3 = new State()
+    {
+      Name = "q3",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    public static State q4 = new State()
+    {
+      Name = "q4",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    public static State q5 = new State()
+    {
+      Name = "q5",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = true
+
+
+    };
+    public static State q6 = new State()
+    {
+      Name = "q6",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    State InitialState = q1;
+    public FA2()
+    {
+      q1.Transitions['0'] = q2;
+      q1.Transitions['1'] = q3;
+
+      q2.Transitions['0'] = q6;
+      q2.Transitions['1'] = q5;
+      
+      q3.Transitions['0'] = q5;
+      q3.Transitions['1'] = q4;
+      
+      q4.Transitions['0'] = q2;
+      q4.Transitions['1'] = q3;
+      
+      q5.Transitions['0'] = q3;
+      q5.Transitions['1'] = q2;
+
+      q6.Transitions['0'] = q2;
+      q6.Transitions['1'] = q3;
+      
+    }
     public bool? Run(IEnumerable<char> s)
     {
-      return false;
+       State current = InitialState;
+         foreach (var c in s) // цикл по всем символам 
+            {
+                current = current.Transitions[c]; 
+                if (current == null)              
+                    return null;
+            }
+            return current.IsAcceptState;     
     }
   }
   
   public class FA3
   {
+    public static State q1 = new State()
+    {
+      Name = "q1",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    public static State q2 = new State()
+    {
+      Name = "q2",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = false
+
+
+    };
+    public static State q3 = new State()
+    {
+      Name = "q3",
+      Transitions = new Dictionary<char, State>(),
+      IsAcceptState = true
+
+
+    };
+    public FA3()
+    {
+      q1.Transitions['0'] = q1;
+      q1.Transitions['1'] = q2;
+
+      q2.Transitions['0'] = q1;
+      q2.Transitions['1'] = q3;
+      
+      q3.Transitions['0'] = q3;
+      q3.Transitions['1'] = q1;
+      
+      
+    }
+    State InitialState = q1;
     public bool? Run(IEnumerable<char> s)
     {
-      return false;
+      State current = InitialState;
+         foreach (var c in s) // цикл по всем символам 
+            {
+                current = current.Transitions[c]; 
+                if (current == null)              
+                    return null;
+            }
+            return current.IsAcceptState;   
     }
   }
 
