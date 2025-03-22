@@ -208,7 +208,7 @@ namespace fans
       q2.Transitions['1'] = q3;
       
       q3.Transitions['0'] = q3;
-      q3.Transitions['1'] = q1;
+      q3.Transitions['1'] = q3;
       
       
     }
