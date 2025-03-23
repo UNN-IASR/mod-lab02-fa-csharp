@@ -18,7 +18,15 @@ namespace fans
   {
     public bool? Run(IEnumerable<char> s)
     {
-      return false;
+      int cnt0 = 0;
+      int cnt1 = 0;
+      foreach(var e in s) {
+        if(e == '0) {
+           cnt0++;
+        } else {
+          cnt1++;
+        }
+      return cnt0 == 1 && cnt1 > 0;  
     }
   }
 
@@ -26,7 +34,15 @@ namespace fans
   {
     public bool? Run(IEnumerable<char> s)
     {
-      return false;
+     int cnt0 = 0;
+      int cnt1 = 0;
+      foreach(var e in s) {
+        if(e == '0) {
+           cnt0++;
+        } else {
+          cnt1++;
+        }
+      return cnt0 % 2 && cnt1 % 2; 
     }
   }
   
@@ -34,6 +50,11 @@ namespace fans
   {
     public bool? Run(IEnumerable<char> s)
     {
+      for(int i = 1; i < s.Count(); ++i){
+          if(s[i] == '1' && s[i - 1] == '1') {
+            return true;
+          }
+      }
       return false;
     }
   }
