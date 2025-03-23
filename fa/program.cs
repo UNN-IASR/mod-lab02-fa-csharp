@@ -21,7 +21,7 @@ namespace fans
       int cnt0 = 0;
       int cnt1 = 0;
       foreach(var e in s) {
-        if(e == '0) {
+        if(e == '0') {
            cnt0++;
         } else {
           cnt1++;
@@ -37,7 +37,7 @@ namespace fans
      int cnt0 = 0;
       int cnt1 = 0;
       foreach(var e in s) {
-        if(e == '0) {
+        if(e == '0') {
            cnt0++;
         } else {
           cnt1++;
