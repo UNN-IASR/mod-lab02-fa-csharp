@@ -10,8 +10,8 @@ class Program
 {
   static void Main(string[] args)
   {
-    String str = "0111";
-    FA1 fa1 = new FA1();
+    String str = "00110011";
+    FA3 fa1 = new FA3();
     bool? res = fa1.Run(str);
     Console.WriteLine(res.ToString());
   }
