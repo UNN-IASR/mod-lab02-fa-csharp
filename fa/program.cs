@@ -10,15 +10,9 @@ class Program
 {
   static void Main(string[] args)
   {
-    String s = "01111";
+    String str = "0111";
     FA1 fa1 = new FA1();
-    bool? result1 = fa1.Run(s);
-    Console.WriteLine(result1);
-    FA2 fa2 = new FA2();
-    bool? result2 = fa2.Run(s);
-    Console.WriteLine(result2);
-    FA3 fa3 = new FA3();
-    bool? result3 = fa3.Run(s);
-    Console.WriteLine(result3);
+    bool? res = fa1.Run(str);
+    Console.WriteLine(res.ToString());
   }
 }
