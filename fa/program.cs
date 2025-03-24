@@ -59,12 +59,12 @@ namespace fans
     public bool? Run(IEnumerable<char> s) {
       State current = InitialState;
       foreach (var c in s) {
-        current = current.Transitions[c];
         if (current == null) {
           return null;
         }
-        return current.IsAcceptState;
+        current = current.Transitions[c];
       }
+      return current.IsAcceptState;
     }
   }
 
@@ -104,15 +104,15 @@ namespace fans
       q3.Transitions['0'] = q2;
       q3.Transitions['1'] = q1;
     }
-     public bool? Run(IEnumerable<char> s) {
+    public bool? Run(IEnumerable<char> s) {
       State current = InitialState;
       foreach (var c in s) {
-        current = current.Transitions[c];
         if (current == null) {
           return null;
         }
-        return current.IsAcceptState;
+        current = current.Transitions[c];
       }
+      return current.IsAcceptState;
     }
   }
   
@@ -144,15 +144,15 @@ namespace fans
       q2.Transitions['0'] = q2;
       q2.Transitions['1'] = q2;
     }
-     public bool? Run(IEnumerable<char> s) {
+    public bool? Run(IEnumerable<char> s) {
       State current = InitialState;
       foreach (var c in s) {
-        current = current.Transitions[c];
         if (current == null) {
           return null;
         }
-        return current.IsAcceptState;
+        current = current.Transitions[c];
       }
+      return current.IsAcceptState;
     }
   }
 
