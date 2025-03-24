@@ -46,7 +46,7 @@ namespace NET
             FA1 fa = new FA1();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == true);
-        }
+        } 
         [TestMethod]
         public void TestMethod_fa1_1()
         {
@@ -86,7 +86,15 @@ namespace NET
             FA1 fa = new FA1();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == true);
-        } 
+        }
+        [TestMethod]
+        public void TestMethod_fa1_6()
+        {
+            String s = "0";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }  
 
         //______________________________test_FA2
         [TestMethod]
@@ -152,7 +160,15 @@ namespace NET
             FA2 fa = new FA2();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == true);
-        }    
+        }
+        [TestMethod]
+        public void TestMethod_fa2_5()
+        {
+            String s = "111";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        } 
         //______________________________test_FA3
         [TestMethod]
         public void TestMethod10()
@@ -198,6 +214,14 @@ namespace NET
         public void TestMethod_fa3_4()
         {
             String s = "110000000000";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }
+        [TestMethod]
+        public void TestMethod_fa3_5()
+        {
+            String s = "11";
             FA3 fa = new FA3();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == true);

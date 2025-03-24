@@ -23,7 +23,7 @@ namespace fans
         public State q2 = new State()
         {
             Name = "q2",
-            IsAcceptState = true, 
+            IsAcceptState = false, 
             Transitions = new Dictionary<char, State>()
         };
         public State q3 = new State()
@@ -32,17 +32,31 @@ namespace fans
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
+        public State q4 = new State()
+        {
+            Name = "q4",
+            IsAcceptState = true,
+            Transitions = new Dictionary<char, State>()
+        };
+        public State q5 = new State()
+        {
+            Name = "q5",
+            IsAcceptState = false,
+            Transitions = new Dictionary<char, State>()
+        };
         State InitialState = q1;
         public FA1()
         {
-            q1.Transitions['1'] = q1;
-            q1.Transitions['0'] = q2;
-            
-            q2.Transitions['1'] = q2;
-            q2.Transitions['0'] = q3;
-            
+            q1.Transitions['1'] = q3;
+            q1.Transitions['0'] = q2;            
+            q2.Transitions['1'] = q4;
+            q2.Transitions['0'] = q5;       
             q3.Transitions['1'] = q3;
-            q3.Transitions['0'] = q3;
+            q3.Transitions['0'] = q4;
+            q4.Transitions['1'] = q4;
+            q4.Transitions['0'] = q5;
+            q5.Transitions['1'] = q5;
+            q5.Transitions['0'] = q5;
         }
         public bool? Run(IEnumerable<char> s)
         {
@@ -56,7 +70,6 @@ namespace fans
             return current.IsAcceptState;
         }
     }
-
     public class FA2
     {
         public static State q1 = new State()
@@ -83,25 +96,18 @@ namespace fans
             IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
-
-
         State InitialState = q1;
-
         public FA2()
         {
             q1.Transitions['1'] = q2;
             q1.Transitions['0'] = q3;
-
             q2.Transitions['1'] = q1;
             q2.Transitions['0'] = q4;
-
             q3.Transitions['1'] = q4;
             q3.Transitions['0'] = q1;
-
             q4.Transitions['1'] = q3;
             q4.Transitions['0'] = q2;
         }
-
         public bool? Run(IEnumerable<char> s)
         {
             State current = InitialState;
@@ -135,22 +141,15 @@ namespace fans
             IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
-
-
-
         State InitialState = q1;
-
         public FA3()
         {
             q1.Transitions['1'] = q2;
             q1.Transitions['0'] = q1;
-
             q2.Transitions['1'] = q3;
             q2.Transitions['0'] = q1;
-
             q3.Transitions['1'] = q3;
             q3.Transitions['0'] = q3;
-
         }
 
         public bool? Run(IEnumerable<char> s)
