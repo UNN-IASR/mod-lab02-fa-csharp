@@ -8,27 +8,30 @@ namespace fans
 {
   public class State
   {
-    public string Name;
-    public Dictionary<char, State> Transitions;
-    public bool IsAcceptState;
+        string _name;
+        bool _isAcceptState;
+        public Dictionary<char, State> Transitions;
+
+        public bool IsAcceptState {  get { return _isAcceptState; } }
 
         public State(string Name, bool IsAcceptState)
         {
-            this.Name = Name;
+            this._name = Name;
             Transitions = new Dictionary<char, State>();
-            this.IsAcceptState = IsAcceptState;
+            this._isAcceptState = IsAcceptState;
         }
   }
 
 
   public class FA1
   {
-        public static State q0 = new State("q0", false);
-        public static State q1 = new State("q1", false);
-        public static State q2 = new State("q2", false);
-        public static State q3 = new State("q3", true);
-        public static State q4 = new State("q4", false);
+        static State q0 = new State("q0", false); //начальное состояние
+        static State q1 = new State("q1", false); //встретили хотя бы одну 1, 0 еще не встретили
+        static State q2 = new State("q2", false); //встретили ровно один 0, но 1 еще не встречена
+        static State q3 = new State("q3", true);  //встречен ровно один 0 и хотя бы 1 единиица
+        static State q4 = new State("q4", false); //встречено более одного 0
         State InitialState = q0;
+
         public FA1()
         {
             q0.Transitions['0'] = q2;
@@ -49,7 +52,6 @@ namespace fans
         
         public bool? Run(IEnumerable<char> s)
         {
-            
             State current = InitialState;
             foreach (var c in s) // цикл по всем символам 
             {
@@ -64,10 +66,10 @@ namespace fans
 
   public class FA2
   {
-        public static State q1 = new State("q1", false); // оба четные
-        public static State q2 = new State("q2", false); //четное 0 и нечетное 1
-        public static State q3 = new State("q3", false); //нечетное 0 и четное 1
-        public static State q4 = new State("q4", true); //оба нечетные
+        static State q1 = new State("q1", false); // оба четные
+        static State q2 = new State("q2", false); //четное 0 и нечетное 1
+        static State q3 = new State("q3", false); //нечетное 0 и четное 1
+        static State q4 = new State("q4", true); //оба нечетные
         State InitialState = q1;
 
         public FA2()
@@ -87,7 +89,6 @@ namespace fans
 
         public bool? Run(IEnumerable<char> s)
         {
-
             State current = InitialState;
             foreach (var c in s) // цикл по всем символам 
             {
@@ -102,11 +103,37 @@ namespace fans
   
   public class FA3
   {
-    public bool? Run(IEnumerable<char> s)
-    {
-      return false;
+        static State q1 = new State("q1", false); // ищем 1
+        static State q2 = new State("q2", false); //нашли 1
+        static State q3 = new State("q3", true); //нашли две 1 подряд
+
+        State InitialState = q1;
+
+        public FA3()
+        {
+            q1.Transitions['0'] = q1;
+            q1.Transitions['1'] = q2;
+
+            q2.Transitions['0'] = q1;
+            q2.Transitions['1'] = q3;
+
+            q3.Transitions['0'] = q3;
+            q3.Transitions['1'] = q3;
+        }
+
+        public bool? Run(IEnumerable<char> s)
+        {
+            State current = InitialState;
+            foreach (var c in s) // цикл по всем символам 
+            {
+                current = current.Transitions[c]; // меняем состояние на то, в которое у нас переход
+                if (current == null)              // если его нет, возвращаем признак ошибки
+                    return null;
+                // иначе переходим к следующему
+            }
+            return current.IsAcceptState;
+        }
     }
-  }
 
   class Program
   {
