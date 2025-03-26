@@ -16,31 +16,31 @@ namespace fans
 
   public class FA1
   {
-        public static State a = new State()
+        public static State a = new State() //начальное состояние(нет 0, нет 1)
         {
             Name = "a",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public State b = new State()
+        public State b = new State() //есть один 0, нет 1
         {
             Name = "b",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public State c = new State()
+        public State c = new State() //два 0 и больше (ловушка)
         {
             Name = "c",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public State d = new State()
+        public State d = new State() //есть 1, нет 0
         {
             Name = "d",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public State e = new State()
+        public State e = new State() //один 0, есть 1 (принимающее)
         {
             Name = "e",
             IsAcceptState = true,
@@ -80,25 +80,25 @@ namespace fans
 
   public class FA2
   {
-        public static State a = new State()
+        public static State a = new State() //чётное кол-во 0, четное кол-во 1
         {
             Name = "a",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public State b = new State()
+        public State b = new State() //чет 0, нечет 1
         {
             Name = "b",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public State c = new State()
+        public State c = new State() //нечет 0, чет 1
         {
             Name = "c",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public State d = new State()
+        public State d = new State() //нечет 0, нечет 1 (принимающее)
         {
             Name = "d",
             IsAcceptState = true,
@@ -136,19 +136,19 @@ namespace fans
   
   public class FA3
   {
-        public static State a = new State()
+        public static State a = new State() //встретили 0, нет 1
         {
             Name = "a",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public State b = new State()
+        public State b = new State() //встретили одну 1
         {
             Name = "b",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public State c = new State()
+        public State c = new State() //встретили 11 (принимающее)
         {
             Name = "c",
             IsAcceptState = true,
