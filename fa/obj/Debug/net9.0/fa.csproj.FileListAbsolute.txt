@@ -1,0 +1,12 @@
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\bin\Debug\net9.0\fa.deps.json
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\bin\Debug\net9.0\fa.dll
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\bin\Debug\net9.0\fa.pdb
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.AssemblyInfo.cs
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.sourcelink.json
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.dll
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\refint\fa.dll
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.pdb
+C:\Users\Admin\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\ref\fa.dll
