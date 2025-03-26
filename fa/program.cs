@@ -50,7 +50,7 @@ namespace fans
 
         State InitialState = q0;
 
-        public FA()
+        public FA1()
         {
             q0.Transitions['0'] = q1;
             q0.Transitions['1'] = q2;
@@ -105,7 +105,7 @@ namespace fans
 
         State InitialState = q0;
 
-        public FA()
+        public FA2()
         {
             q0.Transitions['0'] = q2;
             q0.Transitions['1'] = q1;
@@ -150,7 +150,7 @@ namespace fans
 
         State InitialState = q0;
 
-        public FA()
+        public FA3()
         {
             q0.Transitions['0'] = q0;
             q0.Transitions['1'] = q1;
