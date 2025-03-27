@@ -87,18 +87,30 @@ namespace fans
     public State b = new State()
     {
       Name = "b",
-      IsAcceptState = true,
+      IsAcceptState = false,
       Transitions = new Dictionary<char, State>()
     };
     public State c = new State()
     {
       Name = "c",
-      IsAcceptState = true,
+      IsAcceptState = false,
       Transitions = new Dictionary<char, State>()
     };
     public State d = new State()
     {
       Name = "d",
+      IsAcceptState = false,
+      Transitions = new Dictionary<char, State>()
+    };
+    public static State e = new State()
+    {
+      Name = "e",
+      IsAcceptState = true,
+      Transitions = new Dictionary<char, State>()
+    };
+    public static State f = new State()
+    {
+      Name = "f",
       IsAcceptState = false,
       Transitions = new Dictionary<char, State>()
     };
@@ -109,12 +121,16 @@ namespace fans
     {
       a.Transitions['0'] = b;
       a.Transitions['1'] = c;
-      b.Transitions['0'] = a;
-      b.Transitions['1'] = d;
-      c.Transitions['0'] = d;
-      c.Transitions['1'] = a;
-      d.Transitions['0'] = c;
-      d.Transitions['1'] = b;
+      b.Transitions['0'] = f;
+      b.Transitions['1'] = e;
+      c.Transitions['0'] = e;
+      c.Transitions['1'] = d;
+      d.Transitions['0'] = b;
+      d.Transitions['1'] = c;
+      e.Transitions['0'] = c;
+      e.Transitions['1'] = b;
+      f.Transitions['0'] = b;
+      f.Transitions['1'] = c;
     }
         
     public bool? Run(IEnumerable<char> s)
