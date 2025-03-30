@@ -76,11 +76,11 @@ namespace fans
     public bool? Run(IEnumerable<char> s)
     {
       State current = InitialState;
-      foreach (char c in s)
+      foreach (var c in s)
       {
-        if (!current.Transitions.ContainsKey(c))
-          return null;
         current = current.Transitions[c];
+        if (current == null)
+          return null;
       }
       return current.IsAcceptState;
     }
@@ -88,17 +88,115 @@ namespace fans
 
   public class FA2
   {
+    State a = new State() // Начальное состояние (чет, чет)
+    {
+      Name = "a",
+      IsAcceptState = false,
+      Transitions = new Dictionary<char, State>()
+    };
+
+    State b = new State() // (нечет, чет)
+    {
+      Name = "b",
+      IsAcceptState = false,
+      Transitions = new Dictionary<char, State>()
+    };
+
+    State c = new State() // (чет, нечет)
+    {
+      Name = "с",
+      IsAcceptState = false,
+      Transitions = new Dictionary<char, State>()
+    };
+
+    State d = new State() // (нечет, нечет)
+    {
+      Name = "d",
+      IsAcceptState = true,
+      Transitions = new Dictionary<char, State>()
+    };
+
+    State InitialState;
+
+    public FA2()
+    {
+      InitialState = a;
+
+      a.Transitions['0'] = b;
+      a.Transitions['1'] = c;
+
+      b.Transitions['0'] = a;
+      b.Transitions['1'] = d;
+
+      c.Transitions['0'] = d;
+      c.Transitions['1'] = a;
+
+      d.Transitions['0'] = c;
+      d.Transitions['1'] = b;
+
+    }
     public bool? Run(IEnumerable<char> s)
     {
-      return false;
+      State current = InitialState;
+      foreach (var c in s)
+      {
+        current = current.Transitions[c];
+        if (current == null)
+          return null;
+      }
+      return current.IsAcceptState;
     }
   }
   
   public class FA3
   {
+    State a = new State() // Начальное состояние (чет, чет)
+    {
+      Name = "a",
+      IsAcceptState = false,
+      Transitions = new Dictionary<char, State>()
+    };
+
+    State b = new State() // (нечет, чет)
+    {
+      Name = "b",
+      IsAcceptState = false,
+      Transitions = new Dictionary<char, State>()
+    };
+
+    State c = new State() // (чет, нечет)
+    {
+      Name = "с",
+      IsAcceptState = true,
+      Transitions = new Dictionary<char, State>()
+    };
+
+    State InitialState;
+
+    public FA3()
+    {
+      InitialState = a;
+
+      a.Transitions['0'] = a;
+      a.Transitions['1'] = b;
+
+      b.Transitions['0'] = a;
+      b.Transitions['1'] = c;
+
+      c.Transitions['0'] = c;
+      c.Transitions['1'] = c;
+
+    }
     public bool? Run(IEnumerable<char> s)
     {
-      return false;
+      State current = InitialState;
+      foreach (var c in s)
+      {
+        current = current.Transitions[c];
+        if (current == null)
+          return null;
+      }
+      return current.IsAcceptState;
     }
   }
 
