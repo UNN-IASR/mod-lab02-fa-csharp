@@ -8,8 +8,8 @@ namespace fans
 {
     public class State
     {
-        public string Name;
-        public Dictionary<char, State> Transitions;
+        public string Name = ""; // Инициализация пустой строкой
+        public Dictionary<char, State> Transitions = new Dictionary<char, State>(); // Инициализация пустым словарем
         public bool IsAcceptState;
     }
 
@@ -50,15 +50,17 @@ namespace fans
     }
 
     /// <summary>
-    /// Конечный автомат, принимающий строки с нечётной длиной
+    /// Конечный автомат, принимающий строки с нечётным количеством '0' и нечётным количеством '1'
     /// </summary>
     public class FA2
     {
         public bool? Run(string input)
         {
             // Состояния:
-            // 0: чётная длина строки
-            // 1: нечётная длина строки (принимающее)
+            // 0: чётное '0', чётное '1' (начальное)
+            // 1: чётное '0', нечётное '1'
+            // 2: нечётное '0', чётное '1'
+            // 3: нечётное '0', нечётное '1' (принимающее)
             int state = 0;
 
             foreach (char c in input)
@@ -66,12 +68,29 @@ namespace fans
                 // Если символ не '0' и не '1', возвращаем null
                 if (c != '0' && c != '1') return null;
 
-                // Меняем состояние на противоположное для каждого символа
-                state = (state == 0) ? 1 : 0;
+                switch (state)
+                {
+                    case 0: // чётное '0', чётное '1'
+                        if (c == '0') state = 2; // Нечётное '0'
+                        else if (c == '1') state = 1; // Нечётное '1'
+                        break;
+                    case 1: // чётное '0', нечётное '1'
+                        if (c == '0') state = 3; // Нечётное '0'
+                        else if (c == '1') state = 0; // Чётное '1'
+                        break;
+                    case 2: // нечётное '0', чётное '1'
+                        if (c == '0') state = 0; // Чётное '0'
+                        else if (c == '1') state = 3; // Нечётное '1'
+                        break;
+                    case 3: // нечётное '0', нечётное '1'
+                        if (c == '0') state = 1; // Чётное '0'
+                        else if (c == '1') state = 2; // Чётное '1'
+                        break;
+                }
             }
 
-            // Принимаем, если длина нечётная (состояние 1)
-            return state == 1;
+            // Принимаем, если оба количества нечётные (состояние 3)
+            return state == 3;
         }
     }
 
