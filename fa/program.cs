@@ -4,115 +4,106 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace fans
+namespace Fans
 {
+    /// <summary>
+    /// Конечный автомат, принимающий строки с ровно одним '0'
+    /// </summary>
     public class FA1
     {
-        public bool? Run(string s)
+        public bool? Run(string input)
         {
             // Состояния:
-            // q0: не встречено '0'
-            // q1: встречен один '0', но нет '1'
-            // q2: встречен один '0' и хотя бы один '1' (принимающее)
-            // q3: более одного '0' (не принимающее)
+            // 0: не встречено '0' (начальное)
+            // 1: встречен ровно один '0' (принимающее)
+            // 2: встречено более одного '0' (не принимающее)
             int state = 0;
 
-            foreach (char c in s)
+            foreach (char c in input)
             {
-                if (c != '0' && c != '1') return null; // Некорректный символ
+                // Если символ не '0' и не '1', возвращаем null
+                if (c != '0' && c != '1') return null;
 
                 switch (state)
                 {
-                    case 0: // q0
-                        if (c == '0') state = 1;
+                    case 0: // Начальное состояние: нет '0'
+                        if (c == '0') state = 1; // Переход при встрече первого '0'
                         break;
-                    case 1: // q1
-                        if (c == '0') state = 3;
-                        else if (c == '1') state = 2;
+                    case 1: // Встречен один '0'
+                        if (c == '0') state = 2; // Переход при встрече второго '0'
                         break;
-                    case 2: // q2
-                        if (c == '0') state = 3;
-                        break;
-                    case 3: // q3
-                        break;
+                    case 2: // Более одного '0'
+                        break; // Остаёмся в не принимающем состоянии
                 }
             }
 
-            return state == 2; // Принимающее состояние — q2
+            // Принимаем, если закончили в состоянии 1 (ровно один '0')
+            return state == 1;
         }
     }
 
+    /// <summary>
+    /// Конечный автомат, принимающий строки с нечётной длиной
+    /// </summary>
     public class FA2
     {
-        public bool? Run(string s)
+        public bool? Run(string input)
         {
             // Состояния:
-            // q00: четное '0', четное '1'
-            // q01: четное '0', нечетное '1'
-            // q10: нечетное '0', четное '1'
-            // q11: нечетное '0', нечетное '1' (принимающее)
+            // 0: чётная длина строки
+            // 1: нечётная длина строки (принимающее)
             int state = 0;
 
-            foreach (char c in s)
+            foreach (char c in input)
             {
-                if (c != '0' && c != '1') return null; // Некорректный символ
+                // Если символ не '0' и не '1', возвращаем null
+                if (c != '0' && c != '1') return null;
 
-                switch (state)
-                {
-                    case 0: // q00
-                        if (c == '0') state = 2;
-                        else if (c == '1') state = 1;
-                        break;
-                    case 1: // q01
-                        if (c == '0') state = 3;
-                        else if (c == '1') state = 0;
-                        break;
-                    case 2: // q10
-                        if (c == '0') state = 0;
-                        else if (c == '1') state = 3;
-                        break;
-                    case 3: // q11
-                        if (c == '0') state = 1;
-                        else if (c == '1') state = 2;
-                        break;
-                }
+                // Меняем состояние на противоположное для каждого символа
+                state = (state == 0) ? 1 : 0;
             }
 
-            return state == 3; // Принимающее состояние — q11
+            // Принимаем, если длина нечётная (состояние 1)
+            return state == 1;
         }
     }
 
+    /// <summary>
+    /// Конечный автомат, принимающий строки с хотя бы одним "11"
+    /// </summary>
     public class FA3
     {
-        public bool? Run(string s)
+        public bool? Run(string input)
         {
             // Состояния:
-            // q0: не встречено "11", последний символ не '1'
-            // q1: последняя '1', но нет "11"
-            // q2: встречено "11" (принимающее)
+            // 0: нет "11", последний символ не '1' (начальное)
+            // 1: последняя '1', но нет "11"
+            // 2: встречено "11" (принимающее)
             int state = 0;
 
-            foreach (char c in s)
+            foreach (char c in input)
             {
-                if (c != '0' && c != '1') return null; // Некорректный символ
+                // Если символ не '0' и не '1', возвращаем null
+                if (c != '0' && c != '1') return null;
 
                 switch (state)
                 {
-                    case 0: // q0
-                        if (c == '1') state = 1;
+                    case 0: // Начальное состояние: нет "11"
+                        if (c == '1') state = 1; // Переход при встрече '1'
                         break;
-                    case 1: // q1
-                        if (c == '0') state = 0;
-                        else if (c == '1') state = 2;
+                    case 1: // Последний символ — '1'
+                        if (c == '0') state = 0; // Возврат в начальное при '0'
+                        else if (c == '1') state = 2; // Переход в принимающее при второй '1'
                         break;
-                    case 2: // q2
-                        if (c == '0') state = 0;
-                        else if (c == '1') state = 2;
+                    case 2: // Встречено "11"
+                        if (c == '0') state = 0; // Возврат в начальное при '0'
+                        else if (c == '1') state = 2; // Остаёмся в принимающем при '1'
                         break;
                 }
             }
 
-            return state == 2; // Принимающее состояние — q2
+            // Принимаем, если закончили в состоянии 2 (есть "11")
+            return state == 2;
         }
     }
 
@@ -120,15 +111,21 @@ namespace fans
     {
         static void Main(string[] args)
         {
-            String s = "01111";
-            FA1 fa1 = new FA1();
-            bool? result1 = fa1.Run(s);
+            string input = "01111";
+            
+            // Создаём экземпляр первого автомата и запускаем
+            var fa1 = new FA1();
+            bool? result1 = fa1.Run(input);
             Console.WriteLine(result1);
-            FA2 fa2 = new FA2();
-            bool? result2 = fa2.Run(s);
+
+            // Создаём экземпляр второго автомата и запускаем
+            var fa2 = new FA2();
+            bool? result2 = fa2.Run(input);
             Console.WriteLine(result2);
-            FA3 fa3 = new FA3();
-            bool? result3 = fa3.Run(s);
+
+            // Создаём экземпляр третьего автомата и запускаем
+            var fa3 = new FA3();
+            bool? result3 = fa3.Run(input);
             Console.WriteLine(result3);
         }
     }
