@@ -41,7 +41,7 @@ namespace fans
             StateE.Transitions['1'] = StateE;
         }
 
-        public bool? Process(string input)
+        public bool? Run(string input)
         {
             State current = _initial;
             foreach (char symbol in input)
@@ -77,7 +77,7 @@ namespace fans
             StateE.Transitions['1'] = StateC;
         }
 
-        public bool? Process(string input)
+        public bool? Run(string input)
         {
             State current = _initial;
             foreach (char symbol in input)
@@ -107,7 +107,7 @@ namespace fans
             StateC.Transitions['1'] = StateC;
         }
 
-        public bool? Process(string input)
+        public bool? Run(string input)
         {
             State current = _initial;
             foreach (char symbol in input)
