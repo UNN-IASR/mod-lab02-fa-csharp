@@ -4,8 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fans
+namespace fans
 {
+    public class State
+    {
+        public string Name;
+        public Dictionary<char, State> Transitions;
+        public bool IsAcceptState;
+    }
+
     /// <summary>
     /// Конечный автомат, принимающий строки с ровно одним '0'
     /// </summary>
@@ -112,7 +119,7 @@ namespace Fans
         static void Main(string[] args)
         {
             string input = "01111";
-            
+
             // Создаём экземпляр первого автомата и запускаем
             var fa1 = new FA1();
             bool? result1 = fa1.Run(input);
