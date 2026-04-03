@@ -1,180 +1,253 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using fans;
 
-namespace fa.Tests
+namespace NET
 {
     [TestClass]
     public class UnitTest1
     {
-        // --------------------- Тесты для FA1 (ровно один '0' и хотя бы одна '1') ---------------------
         [TestMethod]
-        public void FA1_Accept_Valid1()
+        public void TestMethod1_FA1_0111_True()
         {
-            var fa = new FA1();
-            Assert.IsTrue(fa.Run("01").Value);     // один 0, одна 1
+            string s = "0111";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
         }
 
         [TestMethod]
-        public void FA1_Accept_Valid2()
+        public void TestMethod2_FA1_01011_False()
         {
-            var fa = new FA1();
-            Assert.IsTrue(fa.Run("10").Value);     // один 0, одна 1
+            string s = "01011";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA1_Accept_Valid3()
+        public void TestMethod3_FA1_110101011_False()
         {
-            var fa = new FA1();
-            Assert.IsTrue(fa.Run("0111").Value);   // один 0, несколько 1
+            string s = "110101011";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA1_Accept_Valid4()
+        public void TestMethod4_FA1_1110111_True()
         {
-            var fa = new FA1();
-            Assert.IsTrue(fa.Run("1110").Value);   // один 0, несколько 1
+            string s = "1110111";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
         }
 
         [TestMethod]
-        public void FA1_Reject_NoZero()
+        public void TestMethod5_FA1_10_True()
         {
-            var fa = new FA1();
-            Assert.IsFalse(fa.Run("111").Value);   // нет нулей
+            string s = "10";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
         }
 
         [TestMethod]
-        public void FA1_Reject_TwoZeros()
+        public void TestMethod6_FA1_Empty_False()
         {
-            var fa = new FA1();
-            Assert.IsFalse(fa.Run("010").Value);   // два нуля
+            string s = "";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA1_Reject_NoOne()
+        public void TestMethod7_FA1_0_False()
         {
-            var fa = new FA1();
-            Assert.IsFalse(fa.Run("0").Value);     // есть 0, но нет 1
+            string s = "0";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA1_Reject_Empty()
+        public void TestMethod8_FA1_1_False()
         {
-            var fa = new FA1();
-            Assert.IsFalse(fa.Run("").Value);      // пустая строка
-        }
-
-        // --------------------- Тесты для FA2 (нечётное количество '0' и нечётное количество '1') ---------------------
-        [TestMethod]
-        public void FA2_Accept_OneZeroOneOne()
-        {
-            var fa = new FA2();
-            Assert.IsTrue(fa.Run("01").Value);     // 0:1(неч), 1:1(неч)
+            string s = "1";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA2_Accept_ThreeZerosThreeOnes()
+        public void TestMethod9_FA1_001_False()
         {
-            var fa = new FA2();
-            Assert.IsTrue(fa.Run("000111").Value); // 0:3(неч), 1:3(неч)
+            string s = "001";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA2_Accept_Mixed()
+        public void TestMethod10_FA1_101_True()
         {
-            var fa = new FA2();
-            Assert.IsTrue(fa.Run("001011").Value); // 0:3(неч), 1:3(неч)
+            string s = "101";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
         }
 
         [TestMethod]
-        public void FA2_Reject_EvenZerosEvenOnes()
+        public void TestMethod11_FA2_0101_False()
         {
-            var fa = new FA2();
-            Assert.IsFalse(fa.Run("0011").Value);  // 0:2(чет), 1:2(чет)
+            string s = "0101";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA2_Reject_EvenZerosOddOnes()
+        public void TestMethod12_FA2_00110011_False()
         {
-            var fa = new FA2();
-            Assert.IsFalse(fa.Run("001").Value);   // 0:2(чет), 1:1(неч)
+            string s = "00110011";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA2_Reject_OddZerosEvenOnes()
+        public void TestMethod13_FA2_0001_True()
         {
-            var fa = new FA2();
-            Assert.IsFalse(fa.Run("00011").Value); // 0:3(неч), 1:2(чет)
+            string s = "0001";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
         }
 
         [TestMethod]
-        public void FA2_Reject_Empty()
+        public void TestMethod14_FA2_111000_True()
         {
-            var fa = new FA2();
-            Assert.IsFalse(fa.Run("").Value);      // 0:0(чет), 1:0(чет)
-        }
-
-        // --------------------- Тесты для FA3 (содержит "11") ---------------------
-        [TestMethod]
-        public void FA3_Accept_Simple()
-        {
-            var fa = new FA3();
-            Assert.IsTrue(fa.Run("11").Value);
+            string s = "111000";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
         }
 
         [TestMethod]
-        public void FA3_Accept_WithPrefix()
+        public void TestMethod15_FA2_Empty_False()
         {
-            var fa = new FA3();
-            Assert.IsTrue(fa.Run("011").Value);
+            string s = "";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA3_Accept_WithSuffix()
+        public void TestMethod16_FA2_0_False()
         {
-            var fa = new FA3();
-            Assert.IsTrue(fa.Run("110").Value);
+            string s = "0";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA3_Accept_Middle()
+        public void TestMethod17_FA2_1_False()
         {
-            var fa = new FA3();
-            Assert.IsTrue(fa.Run("10110").Value);
+            string s = "1";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA3_Accept_Multiple()
+        public void TestMethod18_FA2_01_True()
         {
-            var fa = new FA3();
-            Assert.IsTrue(fa.Run("111").Value);
+            string s = "01";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
         }
 
         [TestMethod]
-        public void FA3_Reject_No11()
+        public void TestMethod19_FA2_10_True()
         {
-            var fa = new FA3();
-            Assert.IsFalse(fa.Run("1010").Value);
+            string s = "10";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
         }
 
         [TestMethod]
-        public void FA3_Reject_SingleOne()
+        public void TestMethod20_FA3_00110011_True()
         {
-            var fa = new FA3();
-            Assert.IsFalse(fa.Run("1").Value);
+            string s = "00110011";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
         }
 
         [TestMethod]
-        public void FA3_Reject_Empty()
+        public void TestMethod21_FA3_0101_False()
         {
-            var fa = new FA3();
-            Assert.IsFalse(fa.Run("").Value);
+            string s = "0101";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
         }
 
         [TestMethod]
-        public void FA3_Reject_OnlyZeros()
+        public void TestMethod22_FA3_Empty_False()
         {
-            var fa = new FA3();
-            Assert.IsFalse(fa.Run("000").Value);
+            string s = "";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+
+        [TestMethod]
+        public void TestMethod23_FA3_1_False()
+        {
+            string s = "1";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+
+        [TestMethod]
+        public void TestMethod24_FA3_11_True()
+        {
+            string s = "11";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }
+
+        [TestMethod]
+        public void TestMethod25_FA3_101_False()
+        {
+            string s = "101";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+
+        [TestMethod]
+        public void TestMethod26_FA3_110_True()
+        {
+            string s = "110";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }
+
+        [TestMethod]
+        public void TestMethod27_FA3_011_True()
+        {
+            string s = "011";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
         }
     }
 }
