@@ -140,7 +140,7 @@ namespace NET
 			String s = "111";
 			FA2 fa = new FA2();
 			bool? result = fa.Run(s);
-			Assert.IsTrue(result == fa);
+			Assert.IsTrue(result == false);
 		}
 		[TestMethod]
 		public void TestMethod18()
