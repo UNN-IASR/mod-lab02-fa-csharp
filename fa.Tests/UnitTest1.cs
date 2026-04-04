@@ -93,6 +93,117 @@ namespace NET
             FA3 fa = new FA3();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == false);
-        }     
+        }
+        public void TestMethod12() // wwwwwwwwwwwwwwwwwwwwwwwwwwww
+        {
+            String s = "1011011";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        } 
+        [TestMethod]
+        public void TestMethod13()
+        {
+            String s = "011000111";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }  
+        [TestMethod]
+        public void TestMethod14()
+        {
+            String s = "0000011111";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }  
+        [TestMethod]
+        public void TestMethod15()  ////////////awdawdaw
+        {
+            String s = "00010000000001";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }  
+        [TestMethod]
+        public void TestMethod16()
+        {
+            String s = "11111110111110";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        } 
+        [TestMethod]
+        public void TestMethod17()
+        {
+            String s = "0010100011";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }
+        [TestMethod]
+        public void TestMethod18()  // wdawdawdaaw
+        {
+            String s = "0111000101";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }
+        [TestMethod]
+        public void TestMethod19()
+        {
+            String s = "01010110001";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        [TestMethod]
+        public void TestMethod20()
+        {
+            String s = "001111111111111111";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        [TestMethod]
+        public void TestMethod21()
+        {
+            String s = "01011101100100";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }
+        [TestMethod]
+        public void TestMethod22() // dawdawdaw
+        {
+            String s = "11111110111110";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        [TestMethod]
+        public void TestMethod23()
+        {
+            String s = "10110000110";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        [TestMethod]
+        public void TestMethod24()
+        {
+            String s = "0000101010001";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        [TestMethod]
+        public void TestMethod25()
+        {
+            String s = "111101111";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }
     }
 }
