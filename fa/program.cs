@@ -34,7 +34,7 @@ namespace fans
                     counter_1++;
                 }
             }
-            if ((counter_1 == 0) && ((counter_1 + counter_0) != s.Count()))
+            if (counter_1 < 1 || ((counter_1 + counter_0) != s.Count()) || counter_0 != 1)
             {
                 return false;
             }
@@ -59,7 +59,7 @@ namespace fans
                     counter_1++;
                 }
             }
-            if (((counter_0 + counter_1) != s.Count()) && (counter_0 % 2 == 1) && (counter_1 % 2 == 1))
+            if (((counter_0 + counter_1) == s.Count()) && (counter_0 % 2 == 1 && counter_1 % 2 == 1))
             {
                 return true;
             }
@@ -72,20 +72,20 @@ namespace fans
         public bool? Run(IEnumerable<char> s)
         {
             string tmp = "";
-            foreach (var item in s)
-            {
-                if (tmp.Count() < 2)
-                {
-                    tmp += item.ToString();
-                }
-                else if (tmp.Length == 2 && tmp == "11")
-                {
+            foreach (var item in s){
+                if (tmp == "11"){
                     return true;
                 }
-                else
-                {
+                else if(tmp.Length == 2){
                     tmp = tmp.Substring(1);
                 }
+                if (tmp.Count() < 2){
+                    tmp += item.ToString();
+                }
+            }
+            if (tmp == "11")
+            {
+                return true;
             }
             return false;
         }
@@ -95,7 +95,7 @@ namespace fans
     {
         static void Main(string[] args)
         {
-            String s = "01111";
+            String s = "1011";
             FA1 fa1 = new FA1();
             bool? result1 = fa1.Run(s);
             Console.WriteLine(result1);
