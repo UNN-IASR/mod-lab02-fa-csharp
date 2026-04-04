@@ -22,7 +22,7 @@ namespace fans
 
 	public class FA1
 	{
-		public State no0_no1 = new State("no0_no1");
+		public static State no0_no1 = new State("no0_no1");
 		public State no0_has1 = new State("no0_has1");
 		public State one0_no1 = new State("one0_no1");
 		public State one0_has1 = new State("one0_has1", true);
@@ -66,7 +66,7 @@ namespace fans
 
 	public class FA2
 	{
-		public State even0_even1 = new State("even0_even1");
+		public static State even0_even1 = new State("even0_even1");
 		public State even0_odd1 = new State("even0_odd1");
 		public State odd0_even1 = new State("odd0_even1");
 		public State odd0_odd1 = new State("odd0_odd1", true);
@@ -104,7 +104,7 @@ namespace fans
 
 	public class FA3
 	{
-		public State no1 = new State("no1");
+		public static State no1 = new State("no1");
 		public State one1 = new State("one1");
 		public State has11 = new State("has11", true);
 
