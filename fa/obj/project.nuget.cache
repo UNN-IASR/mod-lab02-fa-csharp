@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "psj8b1RJ9OU=",
+  "success": true,
+  "projectFilePath": "D:\\projects\\cpp\\mod-lab02-fa-csharp\\fa\\fa.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kirill\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.13\\microsoft.netcore.app.ref.9.0.13.nupkg.sha512",
+    "C:\\Users\\kirill\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.13\\microsoft.windowsdesktop.app.ref.9.0.13.nupkg.sha512",
+    "C:\\Users\\kirill\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.13\\microsoft.aspnetcore.app.ref.9.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

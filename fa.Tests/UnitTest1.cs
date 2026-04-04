@@ -1,98 +1,164 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using fans;
-namespace NET
+
+// 22 теста: 7 для FA1, 7 для FA2, 8 для FA3
+namespace fa.Tests
 {
     [TestClass]
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void FA1_OneZeroOneOne_Accept()
         {
-            String s = "0111";
-            FA1 fa = new FA1();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
+            var fa = new FA1();
+            Assert.IsTrue(fa.Run("011") == true);
         }
+
         [TestMethod]
-        public void TestMethod2()
+        public void FA1_OneZeroManyOnes_Accept()
         {
-            String s = "01011";
-            FA1 fa = new FA1();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == false);
-        }   
-        [TestMethod]
-        public void TestMethod3()
-        {
-            String s = "110101011";
-            FA1 fa = new FA1();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == false);
-        }  
-        [TestMethod]
-        public void TestMethod4()
-        {
-            String s = "1110111";
-            FA1 fa = new FA1();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
-        }  
-        [TestMethod]
-        public void TestMethod5()
-        {
-            String s = "10";
-            FA1 fa = new FA1();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
-        } 
-        [TestMethod]
-        public void TestMethod6()
-        {
-            String s = "0101";
-            FA2 fa = new FA2();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == false);
-        }  
-        [TestMethod]
-        public void TestMethod7()
-        {
-            String s = "00110011";
-            FA2 fa = new FA2();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == false);
-        }  
-        [TestMethod]
-        public void TestMethod8()
-        {
-            String s = "0001";
-            FA2 fa = new FA2();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
-        }  
-        [TestMethod]
-        public void TestMethod9()
-        {
-            String s = "111000";
-            FA2 fa = new FA2();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
-        } 
-        [TestMethod]
-        public void TestMethod10()
-        {
-            String s = "00110011";
-            FA3 fa = new FA3();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
+            var fa = new FA1();
+            Assert.IsTrue(fa.Run("1110111") == true);
         }
+
         [TestMethod]
-        public void TestMethod11()
+        public void FA1_ZeroThenOne_Accept()
         {
-            String s = "0101";
-            FA3 fa = new FA3();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == false);
-        }     
+            var fa = new FA1();
+            Assert.IsTrue(fa.Run("01") == true);
+        }
+
+        [TestMethod]
+        public void FA1_OnlyZero_Reject()
+        {
+            var fa = new FA1();
+            Assert.IsTrue(fa.Run("0") == false);
+        }
+
+        [TestMethod]
+        public void FA1_NoZero_Reject()
+        {
+            var fa = new FA1();
+            Assert.IsTrue(fa.Run("111") == false);
+        }
+
+        [TestMethod]
+        public void FA1_TwoZeros_Reject()
+        {
+            var fa = new FA1();
+            Assert.IsTrue(fa.Run("0110") == false);
+        }
+
+        [TestMethod]
+        public void FA1_Empty_Reject()
+        {
+            var fa = new FA1();
+            Assert.IsTrue(fa.Run("") == false);
+        }
+
+        [TestMethod]
+        public void FA2_OddZerosOddOnes_Accept()
+        {
+            var fa = new FA2();
+            Assert.IsTrue(fa.Run("01") == true);
+        }
+
+        [TestMethod]
+        public void FA2_OddZerosOddOnes_Long_Accept()
+        {
+            var fa = new FA2();
+            Assert.IsTrue(fa.Run("000111") == true);
+        }
+
+        [TestMethod]
+        public void FA2_Alternating_Accept()
+        {
+            var fa = new FA2();
+            Assert.IsTrue(fa.Run("010101") == true);
+        }
+
+        [TestMethod]
+        public void FA2_EvenZerosEvenOnes_Reject()
+        {
+            var fa = new FA2();
+            Assert.IsTrue(fa.Run("0011") == false);
+        }
+
+        [TestMethod]
+        public void FA2_OnlyOnes_Reject()
+        {
+            var fa = new FA2();
+            Assert.IsTrue(fa.Run("111") == false);
+        }
+
+        [TestMethod]
+        public void FA2_OnlyZeros_Reject()
+        {
+            var fa = new FA2();
+            Assert.IsTrue(fa.Run("000") == false);
+        }
+
+        [TestMethod]
+        public void FA2_Empty_Reject()
+        {
+            var fa = new FA2();
+            Assert.IsTrue(fa.Run("") == false);
+        }
+
+        [TestMethod]
+        public void FA3_ContainsEleven_Accept()
+        {
+            var fa = new FA3();
+            Assert.IsTrue(fa.Run("0011") == true);
+        }
+
+        [TestMethod]
+        public void FA3_OnlyEleven_Accept()
+        {
+            var fa = new FA3();
+            Assert.IsTrue(fa.Run("11") == true);
+        }
+
+        [TestMethod]
+        public void FA3_ElevenAtStart_Accept()
+        {
+            var fa = new FA3();
+            Assert.IsTrue(fa.Run("11000") == true);
+        }
+
+        [TestMethod]
+        public void FA3_ElevenAtEnd_Accept()
+        {
+            var fa = new FA3();
+            Assert.IsTrue(fa.Run("00011") == true);
+        }
+
+        [TestMethod]
+        public void FA3_NoEleven_Reject()
+        {
+            var fa = new FA3();
+            Assert.IsTrue(fa.Run("010") == false);
+        }
+
+        [TestMethod]
+        public void FA3_SingleOne_Reject()
+        {
+            var fa = new FA3();
+            Assert.IsTrue(fa.Run("1") == false);
+        }
+
+        [TestMethod]
+        public void FA3_OnlyZeros_Reject()
+        {
+            var fa = new FA3();
+            Assert.IsTrue(fa.Run("000") == false);
+        }
+
+        [TestMethod]
+        public void FA3_Empty_Reject()
+        {
+            var fa = new FA3();
+            Assert.IsTrue(fa.Run("") == false);
+        }
     }
 }
