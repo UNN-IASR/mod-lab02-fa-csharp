@@ -12,31 +12,28 @@ namespace fans
         public Dictionary<char, State> Transitions;
         public bool IsAcceptState;
     }
+
     public class FA1
     {
-        public State q0, q1, q2, q3;
+        public State q0, q1, q2;
         public State InitialState;
 
         public FA1()
         {
             q0 = new State() { Name = "q0", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-            q1 = new State() { Name = "q1", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-            q2 = new State() { Name = "q2", IsAcceptState = true, Transitions = new Dictionary<char, State>() };
-            q3 = new State() { Name = "q3", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
+            q1 = new State() { Name = "q1", IsAcceptState = true,  Transitions = new Dictionary<char, State>() };
+            q2 = new State() { Name = "q2", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
 
             InitialState = q0;
 
             q0.Transitions['0'] = q1;
             q0.Transitions['1'] = q0;
 
-            q1.Transitions['0'] = q3;
-            q1.Transitions['1'] = q2;
+            q1.Transitions['0'] = q2;
+            q1.Transitions['1'] = q1;
 
-            q2.Transitions['0'] = q3;
+            q2.Transitions['0'] = q2;
             q2.Transitions['1'] = q2;
-
-            q3.Transitions['0'] = q3;
-            q3.Transitions['1'] = q3;
         }
 
         public bool? Run(IEnumerable<char> s)
