@@ -1,0 +1,15 @@
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\bin\Debug\net9.0\fa.deps.json
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\bin\Debug\net9.0\fa.dll
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\bin\Debug\net9.0\fa.pdb
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.AssemblyInfoInputs.cache
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.AssemblyInfo.cs
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.csproj.CoreCompileInputs.cache
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.sourcelink.json
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.dll
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\refint\fa.dll
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.pdb
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\ref\fa.dll
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\bin\Debug\net9.0\fa.exe
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\bin\Debug\net9.0\fa.runtimeconfig.json
+C:\Users\Dora\source\repos\mod-lab02-fa-csharp\fa\obj\Debug\net9.0\fa.genruntimeconfig.cache
