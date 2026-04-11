@@ -1,0 +1,9 @@
+.vs/
+.git/
+git
+.gitignore
+fa/bin/
+fa/obj/
+fa.Tests/bin/
+fa.Tests/obj/
+TestResults/
