@@ -13,9 +13,9 @@ namespace fans
         public bool IsAcceptState;
     }
 
-    public class FA1
+     public class FA1
     {
-        private State q0, q1, q2, q3;
+        private State q0, q1, q2, q3, q4;
         private State InitialState;
 
         public FA1()
@@ -37,21 +37,29 @@ namespace fans
             };
             q3 = new State
             {
-                Name = "q3", IsAcceptState = false,
+                Name = "q3", IsAcceptState = true,
+                Transitions = new Dictionary<char, State>()
+            };
+            q4 = new State
+            {
+                Name = "q4", IsAcceptState = false,
                 Transitions = new Dictionary<char, State>()
             };
 
             q0.Transitions['0'] = q1;
-            q0.Transitions['1'] = q0;
+            q0.Transitions['1'] = q2;
 
-            q1.Transitions['0'] = q3;
-            q1.Transitions['1'] = q2;
+            q1.Transitions['0'] = q4;
+            q1.Transitions['1'] = q3;
 
             q2.Transitions['0'] = q3;
             q2.Transitions['1'] = q2;
 
-            q3.Transitions['0'] = q3;
+            q3.Transitions['0'] = q4;
             q3.Transitions['1'] = q3;
+
+            q4.Transitions['0'] = q4;
+            q4.Transitions['1'] = q4;
 
             InitialState = q0;
         }
