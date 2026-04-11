@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using fans;
+
 namespace NET
 {
     [TestClass]
@@ -14,6 +15,7 @@ namespace NET
             bool? result = fa.Run(s);
             Assert.IsTrue(result == true);
         }
+
         [TestMethod]
         public void TestMethod2()
         {
@@ -21,7 +23,8 @@ namespace NET
             FA1 fa = new FA1();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == false);
-        }   
+        }
+
         [TestMethod]
         public void TestMethod3()
         {
@@ -29,7 +32,8 @@ namespace NET
             FA1 fa = new FA1();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == false);
-        }  
+        }
+
         [TestMethod]
         public void TestMethod4()
         {
@@ -37,7 +41,8 @@ namespace NET
             FA1 fa = new FA1();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == true);
-        }  
+        }
+
         [TestMethod]
         public void TestMethod5()
         {
@@ -45,7 +50,8 @@ namespace NET
             FA1 fa = new FA1();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == true);
-        } 
+        }
+
         [TestMethod]
         public void TestMethod6()
         {
@@ -53,7 +59,8 @@ namespace NET
             FA2 fa = new FA2();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == false);
-        }  
+        }
+
         [TestMethod]
         public void TestMethod7()
         {
@@ -61,7 +68,8 @@ namespace NET
             FA2 fa = new FA2();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == false);
-        }  
+        }
+
         [TestMethod]
         public void TestMethod8()
         {
@@ -69,7 +77,8 @@ namespace NET
             FA2 fa = new FA2();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == true);
-        }  
+        }
+
         [TestMethod]
         public void TestMethod9()
         {
@@ -77,7 +86,8 @@ namespace NET
             FA2 fa = new FA2();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == true);
-        } 
+        }
+
         [TestMethod]
         public void TestMethod10()
         {
@@ -86,6 +96,7 @@ namespace NET
             bool? result = fa.Run(s);
             Assert.IsTrue(result == true);
         }
+
         [TestMethod]
         public void TestMethod11()
         {
@@ -93,6 +104,95 @@ namespace NET
             FA3 fa = new FA3();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == false);
-        }     
+        }
+
+        [TestMethod]
+        public void TestMethod12()
+        {
+            String s = "0";
+            FA1 fa = new FA1();
+            Assert.IsFalse(fa.Run(s) == true);
+        }
+
+        [TestMethod]
+        public void TestMethod13()
+        {
+            String s = "1";
+            FA1 fa = new FA1();
+            Assert.IsFalse(fa.Run(s) == true);
+        }
+
+        [TestMethod]
+        public void TestMethod14()
+        {
+            String s = "101";
+            FA1 fa = new FA1();
+            Assert.IsTrue(fa.Run(s) == true);
+        }
+
+        [TestMethod]
+        public void TestMethod15()
+        {
+            String s = "1111";
+            FA1 fa = new FA1();
+            Assert.IsFalse(fa.Run(s) == true);
+        }
+
+        [TestMethod]
+        public void TestMethod16()
+        {
+            String s = "0";
+            FA2 fa = new FA2();
+            Assert.IsFalse(fa.Run(s) == true);
+        }
+
+        [TestMethod]
+        public void TestMethod17()
+        {
+            String s = "1";
+            FA2 fa = new FA2();
+            Assert.IsFalse(fa.Run(s) == true);
+        }
+
+        [TestMethod]
+        public void TestMethod18()
+        {
+            String s = "01";
+            FA2 fa = new FA2();
+            Assert.IsTrue(fa.Run(s) == true);
+        }
+
+        [TestMethod]
+        public void TestMethod19()
+        {
+            String s = "10101";
+            FA2 fa = new FA2();
+            Assert.IsTrue(fa.Run(s) == false);
+        }
+
+        [TestMethod]
+        public void TestMethod20()
+        {
+            String s = "10";
+            FA3 fa = new FA3();
+            Assert.AreEqual(false, fa.Run(s));
+        }
+
+        [TestMethod]
+        public void TestMethod21()
+        {
+            String s = "110";
+            FA3 fa = new FA3();
+            Assert.IsTrue(fa.Run(s) == true);
+        }
+
+        [TestMethod]
+        public void TestMethod22()
+        {
+            String s = "000000";
+            FA3 fa = new FA3();
+            Assert.IsFalse(fa.Run(s) == true);
+        }
     }
 }
+
