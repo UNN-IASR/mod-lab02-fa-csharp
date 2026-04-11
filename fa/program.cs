@@ -32,7 +32,7 @@ namespace fans
             };
             q2 = new State
             {
-                Name = "q2", IsAcceptState = true,
+                Name = "q2", IsAcceptState = false,
                 Transitions = new Dictionary<char, State>()
             };
             q3 = new State
