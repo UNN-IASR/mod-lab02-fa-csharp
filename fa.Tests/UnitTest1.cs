@@ -93,6 +93,86 @@ namespace NET
             FA3 fa = new FA3();
             bool? result = fa.Run(s);
             Assert.IsTrue(result == false);
-        }     
+        }
+        [TestMethod]
+        public void TestMethod12()
+        {
+            String s = "";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        
+        [TestMethod]
+        public void TestMethod13()
+        {
+            String s = "0";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        
+        [TestMethod]
+        public void TestMethod14()
+        {
+            String s = "111111";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        
+        [TestMethod]
+        public void TestMethod15()
+        {
+            String s = "0111111";
+            FA1 fa = new FA1();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }
+        
+        [TestMethod]
+        public void TestMethod16()
+        {
+            String s = "000111";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }
+        
+        [TestMethod]
+        public void TestMethod17()
+        {
+            String s = "001";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        
+        [TestMethod]
+        public void TestMethod18()
+        {
+            String s = "011";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        
+        [TestMethod]
+        public void TestMethod19()
+        {
+            String s = "";
+            FA2 fa = new FA2();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == false);
+        }
+        
+        [TestMethod]
+        public void TestMethod20()
+        {
+            String s = "101011";
+            FA3 fa = new FA3();
+            bool? result = fa.Run(s);
+            Assert.IsTrue(result == true);
+        }
     }
 }
