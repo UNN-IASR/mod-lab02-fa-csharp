@@ -1,144 +1,229 @@
-using System;
-using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using fans;
 
-namespace fans
+namespace fa.Tests
 {
-    public class State
+    [TestClass]
+    public class FA1Tests
     {
-        public string Name = "";
-        public Dictionary<char, State> Transitions = new Dictionary<char, State>();
-        public bool IsAcceptState;
-    }
+        private FA1 fa1 = null!;
 
-    public abstract class FA
-    {
-        protected State InitialState = null!;
-
-        public bool? Run(IEnumerable<char> s)
+        [TestInitialize]
+        public void Setup()
         {
-            State current = InitialState;
-            foreach (var c in s)
-            {
-                if (!current.Transitions.ContainsKey(c))
-                    return null;
-                current = current.Transitions[c];
-            }
-            return current.IsAcceptState;
+            fa1 = new FA1();
+        }
+
+        [TestMethod]
+        public void FA1_Accept_01()
+        {
+            Assert.IsTrue(fa1.Run("01") == true);
+        }
+
+        [TestMethod]
+        public void FA1_Accept_10()
+        {
+            Assert.IsTrue(fa1.Run("10") == true);
+        }
+
+        [TestMethod]
+        public void FA1_Accept_011()
+        {
+            Assert.IsTrue(fa1.Run("011") == true);
+        }
+
+        [TestMethod]
+        public void FA1_Accept_101()
+        {
+            Assert.IsTrue(fa1.Run("101") == true);
+        }
+
+        [TestMethod]
+        public void FA1_Accept_1101()
+        {
+            Assert.IsTrue(fa1.Run("1101") == true);
+        }
+
+        [TestMethod]
+        public void FA1_Accept_1111101()
+        {
+            Assert.IsTrue(fa1.Run("1111101") == true);
+        }
+
+        [TestMethod]
+        public void FA1_Reject_NoZero()
+        {
+            Assert.IsFalse(fa1.Run("1") == true);
+            Assert.IsFalse(fa1.Run("11") == true);
+            Assert.IsFalse(fa1.Run("111") == true);
+        }
+
+        [TestMethod]
+        public void FA1_Reject_NoOne()
+        {
+            Assert.IsFalse(fa1.Run("0") == true);
+            Assert.IsFalse(fa1.Run("00") == true);
+            Assert.IsFalse(fa1.Run("000") == true);
+        }
+
+        [TestMethod]
+        public void FA1_Reject_TwoZeros()
+        {
+            Assert.IsFalse(fa1.Run("001") == true);
+            Assert.IsFalse(fa1.Run("010") == true);
+            Assert.IsFalse(fa1.Run("100") == true);
+            Assert.IsFalse(fa1.Run("1010") == true);
+        }
+
+        [TestMethod]
+        public void FA1_Reject_EmptyString()
+        {
+            Assert.IsFalse(fa1.Run("") == true);
         }
     }
 
-    // ДКА: ровно один '0' и хотя бы одна '1'
-    // A: старт (нет ни 0, ни 1)
-    // B: видели только единицы, нет нуля
-    // C: видели один 0 и хотя бы одну 1 — ФИНАЛЬНОЕ
-    // D: видели один 0, но ещё нет 1
-    // E: мёртвое (два+ нуля)
-    public class FA1 : FA
+    [TestClass]
+    public class FA2Tests
     {
-        private State A = new State() { Name = "A", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-        private State B = new State() { Name = "B", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-        private State C = new State() { Name = "C", IsAcceptState = true,  Transitions = new Dictionary<char, State>() };
-        private State D = new State() { Name = "D", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-        private State E = new State() { Name = "E", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
+        private FA2 fa2 = null!;
 
-        public FA1()
+        [TestInitialize]
+        public void Setup()
         {
-            A.Transitions['0'] = D;
-            A.Transitions['1'] = B;
+            fa2 = new FA2();
+        }
 
-            B.Transitions['0'] = C;
-            B.Transitions['1'] = B;
+        [TestMethod]
+        public void FA2_Accept_01()
+        {
+            Assert.IsTrue(fa2.Run("01") == true);
+        }
 
-            C.Transitions['0'] = E;
-            C.Transitions['1'] = C;
+        [TestMethod]
+        public void FA2_Accept_10()
+        {
+            Assert.IsTrue(fa2.Run("10") == true);
+        }
 
-            D.Transitions['0'] = E;
-            D.Transitions['1'] = C;
+        [TestMethod]
+        public void FA2_Accept_000111()
+        {
+            Assert.IsTrue(fa2.Run("000111") == true);
+        }
 
-            E.Transitions['0'] = E;
-            E.Transitions['1'] = E;
+        [TestMethod]
+        public void FA2_Accept_111000()
+        {
+            Assert.IsTrue(fa2.Run("111000") == true);
+        }
 
-            InitialState = A;
+        [TestMethod]
+        public void FA2_Reject_EvenZerosEvenOnes()
+        {
+            Assert.IsFalse(fa2.Run("0011") == true);
+            Assert.IsFalse(fa2.Run("1100") == true);
+            Assert.IsFalse(fa2.Run("0101") == true);
+            Assert.IsFalse(fa2.Run("1010") == true);
+        }
+
+        [TestMethod]
+        public void FA2_Reject_OddZerosEvenOnes()
+        {
+            Assert.IsFalse(fa2.Run("011") == true);
+            Assert.IsFalse(fa2.Run("00011") == true);
+            Assert.IsFalse(fa2.Run("100") == true);
+        }
+
+        [TestMethod]
+        public void FA2_Reject_EvenZerosOddOnes()
+        {
+            Assert.IsFalse(fa2.Run("001") == true);
+            Assert.IsFalse(fa2.Run("00111") == true);
+            Assert.IsFalse(fa2.Run("110") == true);
+        }
+
+        [TestMethod]
+        public void FA2_Reject_EmptyString()
+        {
+            Assert.IsFalse(fa2.Run("") == true);
+        }
+
+        [TestMethod]
+        public void FA2_Reject_010()
+        {
+            Assert.IsFalse(fa2.Run("010") == true);
         }
     }
 
-    // ДКА: нечётное кол-во '0' И нечётное кол-во '1'
-    // Состояния кодируют (чётность_0, чётность_1)
-    // S00: чёт/чёт (старт)
-    // S01: чёт/нечёт
-    // S10: нечёт/чёт
-    // S11: нечёт/нечёт — ФИНАЛЬНОЕ
-    public class FA2 : FA
+    [TestClass]
+    public class FA3Tests
     {
-        private State S00 = new State() { Name = "S00", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-        private State S01 = new State() { Name = "S01", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-        private State S10 = new State() { Name = "S10", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-        private State S11 = new State() { Name = "S11", IsAcceptState = true,  Transitions = new Dictionary<char, State>() };
+        private FA3 fa3 = null!;
 
-        public FA2()
+        [TestInitialize]
+        public void Setup()
         {
-            S00.Transitions['0'] = S10;
-            S00.Transitions['1'] = S01;
-
-            S01.Transitions['0'] = S11;
-            S01.Transitions['1'] = S00;
-
-            S10.Transitions['0'] = S00;
-            S10.Transitions['1'] = S11;
-
-            S11.Transitions['0'] = S01;
-            S11.Transitions['1'] = S10;
-
-            InitialState = S00;
+            fa3 = new FA3();
         }
-    }
 
-    // ДКА: содержит подстроку '11'
-    // Q0: старт
-    // Q1: последний символ '1'
-    // Q2: встретили '11' — ФИНАЛЬНОЕ
-    public class FA3 : FA
-    {
-        private State Q0 = new State() { Name = "Q0", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-        private State Q1 = new State() { Name = "Q1", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-        private State Q2 = new State() { Name = "Q2", IsAcceptState = true,  Transitions = new Dictionary<char, State>() };
-
-        public FA3()
+        [TestMethod]
+        public void FA3_Accept_11()
         {
-            Q0.Transitions['0'] = Q0;
-            Q0.Transitions['1'] = Q1;
-
-            Q1.Transitions['0'] = Q0;
-            Q1.Transitions['1'] = Q2;
-
-            Q2.Transitions['0'] = Q2;
-            Q2.Transitions['1'] = Q2;
-
-            InitialState = Q0;
+            Assert.IsTrue(fa3.Run("11") == true);
         }
-    }
 
-    class Program
-    {
-        static void Main(string[] args)
+        [TestMethod]
+        public void FA3_Accept_011()
         {
-            Console.WriteLine("=== FA1: ровно один '0' и хотя бы одна '1' ===");
-            var fa1 = new FA1();
-            string[] tests1 = { "01", "10", "011", "101", "1101", "1111101", "010", "001", "110", "1", "0", "" };
-            foreach (var t in tests1)
-                Console.WriteLine($"\"{t}\" -> {fa1.Run(t)}");
+            Assert.IsTrue(fa3.Run("011") == true);
+        }
 
-            Console.WriteLine("\n=== FA2: нечётное кол-во '0' и нечётное кол-во '1' ===");
-            var fa2 = new FA2();
-            string[] tests2 = { "01", "10", "000111", "111000", "0011", "1100", "011", "001", "110", "010", "0", "1", "" };
-            foreach (var t in tests2)
-                Console.WriteLine($"\"{t}\" -> {fa2.Run(t)}");
+        [TestMethod]
+        public void FA3_Accept_110()
+        {
+            Assert.IsTrue(fa3.Run("110") == true);
+        }
 
-            Console.WriteLine("\n=== FA3: содержит '11' ===");
-            var fa3 = new FA3();
-            string[] tests3 = { "11", "011", "110", "1011", "111", "0110", "10110", "1", "0", "10", "01", "101", "010", "10101", "" };
-            foreach (var t in tests3)
-                Console.WriteLine($"\"{t}\" -> {fa3.Run(t)}");
+        [TestMethod]
+        public void FA3_Accept_1011()
+        {
+            Assert.IsTrue(fa3.Run("1011") == true);
+        }
+
+        [TestMethod]
+        public void FA3_Accept_111()
+        {
+            Assert.IsTrue(fa3.Run("111") == true);
+        }
+
+        [TestMethod]
+        public void FA3_Accept_0110()
+        {
+            Assert.IsTrue(fa3.Run("0110") == true);
+        }
+
+        [TestMethod]
+        public void FA3_Accept_10110()
+        {
+            Assert.IsTrue(fa3.Run("10110") == true);
+        }
+
+        [TestMethod]
+        public void FA3_Reject_No11()
+        {
+            Assert.IsFalse(fa3.Run("1") == true);
+            Assert.IsFalse(fa3.Run("0") == true);
+            Assert.IsFalse(fa3.Run("10") == true);
+            Assert.IsFalse(fa3.Run("01") == true);
+            Assert.IsFalse(fa3.Run("101") == true);
+            Assert.IsFalse(fa3.Run("010") == true);
+            Assert.IsFalse(fa3.Run("10101") == true);
+        }
+
+        [TestMethod]
+        public void FA3_Reject_EmptyString()
+        {
+            Assert.IsFalse(fa3.Run("") == true);
         }
     }
 }
