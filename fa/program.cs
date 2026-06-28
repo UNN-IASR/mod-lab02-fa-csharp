@@ -8,8 +8,8 @@ namespace fans
 {
   public class State
   {
-    public string Name;
-    public Dictionary<char, State> Transitions;
+    public string Name = string.Empty;
+    public Dictionary<char, State> Transitions = new();
     public bool IsAcceptState;
   }
 
